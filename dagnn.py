@@ -69,8 +69,6 @@ class Prop(MessagePassing):
         pps = torch.stack(preds, dim=1)
         retain_score = self.proj(pps)
         retain_score = retain_score.squeeze()
-        print("what is retain score")
-        print(retain_score)
         retain_score = torch.sigmoid(retain_score)
         retain_score = retain_score.unsqueeze(1)
         out = torch.matmul(retain_score, pps).squeeze()
